@@ -47,7 +47,7 @@
             <dependency>
                 <groupId>com.google.protobuf</groupId>
                 <artifactId>protobuf-java-util</artifactId>
-                <version>3.25.9</version>
+                <version>4.36.2</version>
             </dependency>
             <!-- Held below 2.65.0: from that release on it is generated for protobuf-java 4 and its
                  classes need com.google.protobuf.GeneratedFile, which protobuf-java 3.25 does not have,
