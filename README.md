@@ -4,67 +4,68 @@
 </p>
 
 <p align="center">
-  <strong>Any Cloud. Locally.</strong><br />
-  Light, fluffy, and always free<br />
-  No account. No auth token. No feature gates. Just <code>docker compose up</code>.
+  <strong>Cualquier nube. En local.</strong><br />
+  Ligero, esponjoso y siempre gratis<br />
+  Sin cuenta. Sin token de autenticación. Sin funciones bloqueadas. Solo <code>docker compose up</code>.
 </p>
 
 <p align="center">
-  <a href="https://github.com/floci-io/floci/releases/latest"><img src="https://img.shields.io/github/v/release/floci-io/floci?label=latest%20release&color=blue" alt="Latest Release"></a>
-  <a href="https://github.com/floci-io/floci/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/floci-io/floci/release.yml?label=build" alt="Build Status"></a>
-  <a href="https://hub.docker.com/r/floci/floci"><img src="https://img.shields.io/docker/pulls/floci/floci?label=docker%20pulls" alt="Docker Pulls"></a>
-  <a href="https://hub.docker.com/r/floci/floci"><img src="https://img.shields.io/docker/image-size/floci/floci/latest?label=image%20size" alt="Docker Image Size"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-green" alt="License: MIT"></a>
-  <a href="https://github.com/floci-io/floci/stargazers"><img src="https://img.shields.io/github/stars/floci-io/floci?style=flat" alt="GitHub Stars"></a>
+  <a href="https://github.com/floci-io/floci/releases/latest"><img src="https://img.shields.io/github/v/release/floci-io/floci?label=latest%20release&color=blue" alt="Última versión"></a>
+  <a href="https://github.com/floci-io/floci/actions/workflows/release.yml"><img src="https://img.shields.io/github/actions/workflow/status/floci-io/floci/release.yml?label=build" alt="Estado del build"></a>
+  <a href="https://hub.docker.com/r/floci/floci"><img src="https://img.shields.io/docker/pulls/floci/floci?label=docker%20pulls" alt="Descargas en Docker"></a>
+  <a href="https://hub.docker.com/r/floci/floci"><img src="https://img.shields.io/docker/image-size/floci/floci/latest?label=image%20size" alt="Tamaño de la imagen Docker"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-green" alt="Licencia: MIT"></a>
+  <a href="https://github.com/floci-io/floci/stargazers"><img src="https://img.shields.io/github/stars/floci-io/floci?style=flat" alt="Estrellas en GitHub"></a>
 </p>
 
 <p align="center">
-  <a href="#quick-start">Quick Start</a> ·
-  <a href="#features">Features</a> ·
-  <a href="#supported-services">Services</a> ·
-  <a href="#sdk-integration">SDKs</a> ·
+  <a href="#inicio-rápido">Inicio rápido</a> ·
+  <a href="#características">Características</a> ·
+  <a href="#servicios-soportados">Servicios</a> ·
+  <a href="#integración-con-sdks">SDKs</a> ·
   <a href="#testcontainers">Testcontainers</a> ·
-  <a href="#migrating-from-localstack">Migration</a> ·
-  <a href="https://floci.io/floci/">Docs</a>
+  <a href="#migrar-desde-localstack">Migración</a> ·
+  <a href="https://floci.io/floci/">Documentación</a>
 </p>
+
+> **Nota:** esta es una traducción al español del README original en inglés del proyecto [floci-io/floci](https://github.com/floci-io/floci). Los nombres de servicios de AWS, variables de entorno, comandos y bloques de código se dejan tal cual.
 
 ---
 
-## What is Floci?
+## ¿Qué es Floci?
 
-Floci is a free, open-source local AWS emulator for development, testing, and CI.
+Floci es un emulador local de AWS, gratuito y de código abierto, para desarrollo, pruebas e integración continua (CI).
 
-It gives you AWS-shaped services on your machine without requiring a cloud account, an auth token, or paid feature gates. Point your AWS SDK, CLI, Terraform, CDK, OpenTofu, or test suite at `http://localhost:4566` and keep your existing workflows.
+Te da servicios con la misma forma que AWS en tu propia máquina, sin necesidad de una cuenta en la nube, un token de autenticación ni funciones de pago. Apunta tu SDK de AWS, la CLI, Terraform, CDK, OpenTofu o tu batería de tests a `http://localhost:4566` y sigue trabajando como siempre.
 
-Already using LocalStack? Floci is a drop-in replacement: swap the image and keep going. See [Migrating from LocalStack](#migrating-from-localstack).
+¿Ya usas LocalStack? Floci es un reemplazo directo: cambia la imagen y listo. Consulta [Migrar desde LocalStack](#migrar-desde-localstack).
 
-Floci is the AWS member of the [Floci](https://github.com/floci-io) emulator family, named after [floccus](https://en.wikipedia.org/wiki/Cirrocumulus_floccus), the cloud formation that looks like popcorn.
+Floci es el miembro dedicado a AWS de la familia de emuladores [Floci](https://github.com/floci-io), cuyo nombre viene de [floccus](https://en.wikipedia.org/wiki/Cirrocumulus_floccus), la formación de nubes que parece palomitas de maíz.
 
-| Emulator | Cloud | Port |
+| Emulador | Nube | Puerto |
 |---|---|:---:|
 | **[floci](https://github.com/floci-io/floci)** | **AWS** | **4566** |
 | [floci-az](https://github.com/floci-io/floci-az) | Azure | 4577 |
 | [floci-gcp](https://github.com/floci-io/floci-gcp) | GCP | 4588 |
 | [floci-oci](https://github.com/floci-io/floci-oci) | OCI | 4599 |
 
-## Quick Start
+## Inicio rápido
 
-The fastest way to run Floci is with the official [CLI](https://github.com/floci-io/floci-cli)
+La forma más rápida de ejecutar Floci es con la [CLI](https://github.com/floci-io/floci-cli) oficial:
 
 ```bash
 floci start
 ```
 
-No Docker? Each [release](https://github.com/floci-io/floci/releases) also ships a standalone `floci-aws`
-binary for Linux, macOS and Windows; see [Native binary](https://floci.io/floci/getting-started/installation/#native-binary).
+¿No tienes Docker? Cada [release](https://github.com/floci-io/floci/releases) incluye también un binario independiente `floci-aws` para Linux, macOS y Windows; consulta [Binario nativo](https://floci.io/floci/getting-started/installation/#native-binary).
 
-Export the AWS environment variables:
+Exporta las variables de entorno de AWS:
 
 ```bash
 eval $(floci env)
 ```
 
-Use your existing AWS tools normally:
+Usa tus herramientas de AWS de siempre:
 
 ```bash
 aws s3 mb s3://my-bucket
@@ -78,18 +79,18 @@ aws dynamodb create-table \
 aws dynamodb list-tables
 ```
 
-### Watch it run
+### Míralo en acción
 
-This short demo shows the CLI flow: start Floci, export the local AWS environment, run standard AWS CLI commands, and stop the emulator.
+Esta breve demo muestra el flujo con la CLI: arrancar Floci, exportar el entorno local de AWS, ejecutar comandos normales de la AWS CLI y detener el emulador.
 
 https://github.com/user-attachments/assets/b55714dc-ef36-40ae-a734-cd2cadc288a8
 
-All AWS services are available at `http://localhost:4566`. Any [published AWS region](https://floci.io/floci/configuration/partitions/) works, in every partition. Credentials can be any non-empty values unless you explicitly enable stricter service-specific auth checks.
+Todos los servicios de AWS están disponibles en `http://localhost:4566`. Funciona cualquier [región publicada de AWS](https://floci.io/floci/configuration/partitions/), en todas las particiones. Las credenciales pueden ser cualquier valor no vacío, salvo que actives explícitamente comprobaciones de autenticación más estrictas en algún servicio.
 
 <details>
-<summary>Prefer Docker Compose?</summary>
+<summary>¿Prefieres Docker Compose?</summary>
 
-Create a `compose.yaml` file:
+Crea un archivo `compose.yaml`:
 
 ```yaml
 services:
@@ -99,13 +100,13 @@ services:
       - "4566:4566"
 ```
 
-Start Floci:
+Arranca Floci:
 
 ```bash
 docker compose up
 ```
 
-Then configure your AWS environment manually:
+Luego configura tu entorno de AWS manualmente:
 
 ```bash
 export AWS_ENDPOINT_URL=http://localhost:4566
@@ -114,34 +115,36 @@ export AWS_ACCESS_KEY_ID=test
 export AWS_SECRET_ACCESS_KEY=test
 ```
 
+> En Windows PowerShell, el equivalente es `$env:AWS_ENDPOINT_URL="http://localhost:4566"` (y así con cada variable).
+
 </details>
 
 <details>
-<summary>Using the old <code>hectorvent/floci</code> image?</summary>
+<summary>¿Usas la imagen antigua <code>hectorvent/floci</code>?</summary>
 
-Update your image name:
+Actualiza el nombre de la imagen:
 
 ```yaml
-# Before
+# Antes
 image: hectorvent/floci:latest
 
-# After
+# Después
 image: floci/floci:latest
 ```
 
-The old `hectorvent/floci` repository no longer receives updates.
+El repositorio antiguo `hectorvent/floci` ya no recibe actualizaciones.
 
 </details>
 
-## Web Console
+## Consola web
 
-Floci ships a browser console for inspecting the resources in your local emulator.
+Floci incluye una consola en el navegador para inspeccionar los recursos de tu emulador local.
 
-**Open it at:** `http://localhost:4566/_floci/ui`
+**Ábrela en:** `http://localhost:4566/_floci/ui`
 
-Nothing runs at boot. The first request pulls the console image, starts it as a sidecar container on Floci's Docker network, hands it Floci's own reachable address plus the standard AWS environment, polls its health endpoint, and redirects the browser once it reports it can reach Floci. The sidecar's port is bound by Docker, so it needs no `ports:` entry of your own, and its logs are streamed into CloudWatch Logs under `/floci/ui`.
+No se ejecuta nada al arrancar. La primera petición descarga la imagen de la consola, la inicia como contenedor auxiliar (*sidecar*) en la red Docker de Floci, le pasa la dirección accesible de Floci junto con el entorno estándar de AWS, consulta su endpoint de salud y redirige al navegador cuando la consola confirma que puede llegar a Floci. Docker se encarga de publicar el puerto del sidecar, así que no necesitas añadir ninguna entrada `ports:` propia, y sus logs se envían a CloudWatch Logs bajo `/floci/ui`.
 
-Starting a container needs the Docker socket:
+Para iniciar un contenedor se necesita el socket de Docker:
 
 ```yaml
 services:
@@ -153,25 +156,25 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
 ```
 
-| Variable | Default | Description |
+| Variable | Valor por defecto | Descripción |
 |---|---|---|
-| `FLOCI_SERVICES_UI_ENABLED` | `true` | Enable the console sidecar |
-| `FLOCI_SERVICES_UI_IMAGE` | `floci/floci-ui:0.7.0` | Console image to run |
-| `FLOCI_SERVICES_UI_CONTAINER_NAME` | `floci-ui` | Name of the sidecar container |
-| `FLOCI_SERVICES_UI_PORT` | `4500` | Host port the console is published on |
-| `FLOCI_SERVICES_UI_BIND_ADDRESS` | _(none)_ | Host interface that port is published on. Unset publishes on every interface; set `127.0.0.1` when Floci's own port is loopback-only |
-| `FLOCI_SERVICES_UI_KEEP_RUNNING_ON_SHUTDOWN` | `false` | Leave the sidecar running when Floci stops |
+| `FLOCI_SERVICES_UI_ENABLED` | `true` | Activa el sidecar de la consola |
+| `FLOCI_SERVICES_UI_IMAGE` | `floci/floci-ui:0.7.0` | Imagen de la consola a ejecutar |
+| `FLOCI_SERVICES_UI_CONTAINER_NAME` | `floci-ui` | Nombre del contenedor sidecar |
+| `FLOCI_SERVICES_UI_PORT` | `4500` | Puerto del host en el que se publica la consola |
+| `FLOCI_SERVICES_UI_BIND_ADDRESS` | _(ninguno)_ | Interfaz del host en la que se publica ese puerto. Si no se define, se publica en todas; usa `127.0.0.1` cuando el puerto de Floci solo escucha en loopback |
+| `FLOCI_SERVICES_UI_KEEP_RUNNING_ON_SHUTDOWN` | `false` | Deja el sidecar en marcha cuando Floci se detiene |
 
-### Running a different console
+### Usar otra consola
 
-The console is not fixed to the one Floci ships. Any console implementing the [Floci console contract](https://floci.io/floci/ui/console-contract/) runs with nothing but an image name: listen on the port in `PORT`, serve `GET /api/health`, talk to Floci at `AWS_ENDPOINT_URL`.
+La consola no tiene por qué ser la que trae Floci. Cualquier consola que implemente el [contrato de consola de Floci](https://floci.io/floci/ui/console-contract/) funciona indicando solo el nombre de la imagen: debe escuchar en el puerto de `PORT`, responder a `GET /api/health` y hablar con Floci en `AWS_ENDPOINT_URL`.
 
 ```yaml
 environment:
   FLOCI_SERVICES_UI_IMAGE: acme/my-console:1.0
 ```
 
-A console that differs from the contract's defaults says so in its own `io.floci.console.*` image labels, so its operators do not have to. [StackPort](https://github.com/DaviReisVieira/stackport), for example, listens on 8080 rather than 4500; on an image that predates the labels, say it by hand:
+Una consola que se aparte de los valores por defecto del contrato lo declara en sus propias etiquetas de imagen `io.floci.console.*`, para que quien la use no tenga que hacerlo. [StackPort](https://github.com/DaviReisVieira/stackport), por ejemplo, escucha en el 8080 en lugar del 4500; con una imagen anterior a esas etiquetas, indícalo a mano:
 
 ```yaml
 environment:
@@ -181,7 +184,7 @@ environment:
   FLOCI_SERVICES_UI_INTERNAL_PORT: "8080"
 ```
 
-[Floci Dash](https://github.com/ofsazib/floci-dash) is another. It honours `PORT`, so only the two things it does differ on need naming:
+[Floci Dash](https://github.com/ofsazib/floci-dash) es otra opción. Respeta `PORT`, así que solo hay que indicar las dos cosas en las que difiere:
 
 ```yaml
 environment:
@@ -191,92 +194,92 @@ environment:
   FLOCI_SERVICES_UI_STATUS_PATH: /api/healthz
 ```
 
-The endpoint itself is never configured by hand: Floci resolves its own reachable address at start time and injects it as `AWS_ENDPOINT_URL`.
+El endpoint en sí nunca se configura a mano: Floci averigua su propia dirección accesible al arrancar y la inyecta como `AWS_ENDPOINT_URL`.
 
-Full reference: [Web Console](https://floci.io/floci/ui/) and [Console Contract v1](https://floci.io/floci/ui/console-contract/).
+Referencia completa: [Consola web](https://floci.io/floci/ui/) y [Contrato de consola v1](https://floci.io/floci/ui/console-contract/).
 
-## Features
+## Características
 
 <details open>
-<summary><strong>Local AWS without the cloud account</strong></summary>
+<summary><strong>AWS en local sin cuenta en la nube</strong></summary>
 
-Run AWS-compatible services locally without an AWS account, auth token, or paid feature gates.
-
-</details>
-
-<details>
-<summary><strong>Real Docker where fidelity matters</strong></summary>
-
-Lambda, RDS, Neptune, ElastiCache, MSK, ECS, EC2, EKS, OpenSearch, CodeBuild, and Managed Service for Apache Flink use real Docker-backed execution instead of shallow mocks.
+Ejecuta servicios compatibles con AWS en local, sin cuenta de AWS, sin token de autenticación y sin funciones de pago.
 
 </details>
 
 <details>
-<summary><strong>Drop-in AWS compatibility</strong></summary>
+<summary><strong>Docker real donde importa la fidelidad</strong></summary>
 
-Point standard AWS clients at `http://localhost:4566`. Existing credentials, regions, SDKs, CLI commands, and IaC workflows stay familiar.
-
-Terraform can provision AWS-shaped resources locally through Floci using the standard HashiCorp AWS provider. See the [Terraform with Floci guide](docs/getting-started/terraform.md) for provider configuration, resource examples, and optional emulated S3 state.
+Lambda, RDS, Neptune, ElastiCache, MSK, ECS, EC2, EKS, OpenSearch, CodeBuild y Managed Service for Apache Flink se ejecutan sobre contenedores Docker reales en lugar de simulaciones superficiales (*mocks*).
 
 </details>
 
 <details>
-<summary><strong>Fast enough for CI</strong></summary>
+<summary><strong>Compatibilidad directa con AWS</strong></summary>
 
-The native image starts in milliseconds and keeps idle memory low, making it practical for local development and test pipelines.
+Apunta los clientes estándar de AWS a `http://localhost:4566`. Tus credenciales, regiones, SDKs, comandos de la CLI y flujos de infraestructura como código (IaC) siguen funcionando igual.
+
+Terraform puede crear recursos con forma de AWS en local a través de Floci usando el proveedor estándar de AWS de HashiCorp. Consulta la [guía de Terraform con Floci](docs/getting-started/terraform.md) para la configuración del proveedor, ejemplos de recursos y el estado opcional en S3 emulado.
 
 </details>
 
 <details>
-<summary><strong>Configurable persistence</strong></summary>
+<summary><strong>Lo bastante rápido para CI</strong></summary>
 
-Choose from in-memory, persistent, hybrid, and write-ahead log storage depending on the durability profile you need.
+La imagen nativa arranca en milisegundos y consume poca memoria en reposo, lo que la hace práctica para desarrollo local y pipelines de pruebas.
 
 </details>
 
-## Why Floci?
+<details>
+<summary><strong>Persistencia configurable</strong></summary>
 
-LocalStack's community edition [sunset in March 2026](https://blog.localstack.cloud/the-road-ahead-for-localstack/), requiring auth tokens and freezing security updates. Floci is the no-strings-attached alternative.
+Elige entre almacenamiento en memoria, persistente, híbrido o con registro de escritura anticipada (WAL), según la durabilidad que necesites.
 
-| Capability | Floci | LocalStack Community |
+</details>
+
+## ¿Por qué Floci?
+
+La edición comunitaria de LocalStack [dejó de mantenerse en marzo de 2026](https://blog.localstack.cloud/the-road-ahead-for-localstack/): ahora exige tokens de autenticación y congeló las actualizaciones de seguridad. Floci es la alternativa sin ataduras.
+
+| Capacidad | Floci | LocalStack Community |
 |---|:---:|:---:|
-| Auth token required | No | Yes |
-| Security updates | Yes | Frozen |
-| Startup time | ~24 ms | ~3.3 s |
-| Idle memory | ~13 MiB | ~143 MiB |
-| Docker image size | ~90 MB | ~1.0 GB |
-| License | MIT | Restricted |
-| API Gateway v2 / HTTP API | Yes | No |
-| Cognito | Yes | No |
-| RDS, ElastiCache, MSK | Real Docker | No |
-| Neptune (graph DB + Gremlin WebSocket) | Real Docker | No |
-| DocumentDB (MongoDB-compatible) | Real Docker | No |
-| ECS, EC2, EKS | Real Docker | No |
-| CodeBuild | Real Docker execution | No |
-| Native binary | ~40 MB | No |
+| Requiere token de autenticación | No | Sí |
+| Actualizaciones de seguridad | Sí | Congeladas |
+| Tiempo de arranque | ~24 ms | ~3,3 s |
+| Memoria en reposo | ~13 MiB | ~143 MiB |
+| Tamaño de la imagen Docker | ~90 MB | ~1,0 GB |
+| Licencia | MIT | Restringida |
+| API Gateway v2 / HTTP API | Sí | No |
+| Cognito | Sí | No |
+| RDS, ElastiCache, MSK | Docker real | No |
+| Neptune (BD de grafos + WebSocket Gremlin) | Docker real | No |
+| DocumentDB (compatible con MongoDB) | Docker real | No |
+| ECS, EC2, EKS | Docker real | No |
+| CodeBuild | Ejecución real en Docker | No |
+| Binario nativo | ~40 MB | No |
 
-**Broad AWS coverage. Free forever.** See the [Services Overview](https://floci.io/floci/services/) for the full list of emulated services.
+**Amplia cobertura de AWS. Gratis para siempre.** Consulta el [resumen de servicios](https://floci.io/floci/services/) para ver la lista completa de servicios emulados.
 
-## Architecture Overview
+## Arquitectura general
 
 ```mermaid
 flowchart LR
     Client["AWS SDK / CLI"]
 
-    subgraph Floci ["Floci, port 4566"]
-        Router["HTTP Router\nJAX-RS / Vert.x"]
+    subgraph Floci ["Floci, puerto 4566"]
+        Router["Router HTTP\nJAX-RS / Vert.x"]
 
-        subgraph Stateless ["Stateless Services"]
+        subgraph Stateless ["Servicios sin estado"]
             A["SSM · SQS · SNS\nIAM · STS · KMS\nSecrets Manager · SES\nCognito · Kinesis\nEventBridge · Scheduler · AppConfig\nCloudWatch · Step Functions\nCloudFormation · ACM · Config · CloudTrail\nAPI Gateway · AppSync · ELB v2 · Auto Scaling\nElastic Beanstalk · CodeDeploy · CodePipeline · Backup · FIS · Bedrock Runtime · Bedrock AgentCore · Route53 · Transfer"]
         end
 
-        subgraph Stateful ["Stateful Services"]
+        subgraph Stateful ["Servicios con estado"]
             B["S3 · DynamoDB\nDynamoDB Streams"]
         end
 
-        subgraph Containers ["Container Services"]
+        subgraph Containers ["Servicios en contenedores"]
             C["Lambda\nElastiCache\nRDS\nNeptune\nECS\nEC2\nMSK\nEKS\nOpenSearch\nCodeBuild\nManaged Flink"]
-            D["Athena -> floci-duck\nDuckDB sidecar"]
+            D["Athena -> floci-duck\nsidecar DuckDB"]
         end
 
         Router --> Stateless
@@ -286,152 +289,154 @@ flowchart LR
     end
 
     Docker["Docker Engine"]
-    Client -->|"HTTP :4566\nAWS wire protocol"| Router
-    Containers -->|"Docker API\nIAM / SigV4 auth"| Docker
+    Client -->|"HTTP :4566\nprotocolo de AWS"| Router
+    Containers -->|"API de Docker\nautenticación IAM / SigV4"| Docker
 ```
 
-## Supported Services
+## Servicios soportados
 
-Floci supports local emulation for application services, data services, eventing, identity, infrastructure, billing, and container-backed workloads.
+Floci emula en local servicios de aplicación, de datos, de eventos, de identidad, de infraestructura, de facturación y cargas de trabajo basadas en contenedores.
 
-| Category | Services |
+| Categoría | Servicios |
 |---|---|
-| Core app services | S3, SQS, SNS, DynamoDB, Lambda, Lambda MicroVMs, Lambda Web Functions, IAM, STS, KMS, Payment Cryptography, Secrets Manager, SSM |
-| Events and workflows | EventBridge, EventBridge V2, EventBridge Pipes, EventBridge Scheduler, Step Functions, SWF, CloudWatch Logs, CloudWatch Metrics, CloudWatch OAM, CloudWatch RUM, Managed Prometheus (AMP) |
-| API and identity | API Gateway REST, API Gateway v2, AppSync, Cognito, Cognito Identity, ACM, Route53, Route 53 Resolver, Cloud Map, Global Accelerator |
-| Containers and compute | ECS, EC2, Lightsail, EKS, MWAA, ECR, EFS, CodeBuild, CodeDeploy, CodePipeline, CodeGuru Reviewer, CodeArtifact, AWS Batch, Auto Scaling, Application Auto Scaling, Elastic Beanstalk, ELB v2, ELB Classic |
-| Data, analytics, and AI | Athena, Glue, Lake Formation, EMR, EMR Serverless, Redshift, Redshift Data API, Redshift Serverless, Firehose, Managed Service for Apache Flink, OpenSearch, S3 Tables, S3 Vectors, Textract, Transcribe, Comprehend, Rekognition, Translate, Bedrock, Bedrock Runtime, Bedrock AgentCore, Bedrock AgentCore Control, SageMaker |
-| Databases and caching | Aurora DSQL, RDS, RDS Data API, Neptune, DocumentDB, DMS, MemoryDB, ElastiCache, Timestream for InfluxDB |
-| Messaging and transfer | SES, Kinesis, MSK, Amazon MQ, Transfer Family, DataSync, IoT Core, Amazon Connect, Amazon AppIntegrations |
-| Security and governance | AWS Network Firewall, AWS RAM, Service Quotas, WAF v2, GuardDuty, Amazon Inspector, CloudTrail, CloudFront, Resource Groups Tagging API, Resource Explorer 2, CloudHSM v2, Organizations, AWS Account Management, IAM Access Analyzer, IAM Identity Center (SSO Admin, OIDC, Access Portal, SCIM), Identity Store, Amazon Macie, Amazon Detective, Security Hub, Amazon Verified Permissions, Control Catalog, Control Tower, Service Catalog, AWS Marketplace |
-| Cost and billing | AWS Budgets, Pricing, Cost Explorer, Cost and Usage Reports, BCM Pricing Calculator, BCM Data Exports |
-| Resilience, backup, and config | AWS FIS, AWS Backup, Amazon Data Lifecycle Manager, AWS Config, AppConfig, AppConfigData, CloudFormation, Cloud Control API |
+| Servicios básicos de aplicación | S3, SQS, SNS, DynamoDB, Lambda, Lambda MicroVMs, Lambda Web Functions, IAM, STS, KMS, Payment Cryptography, Secrets Manager, SSM |
+| Eventos y flujos de trabajo | EventBridge, EventBridge V2, EventBridge Pipes, EventBridge Scheduler, Step Functions, SWF, CloudWatch Logs, CloudWatch Metrics, CloudWatch OAM, CloudWatch RUM, Managed Prometheus (AMP) |
+| API e identidad | API Gateway REST, API Gateway v2, AppSync, Cognito, Cognito Identity, ACM, Route53, Route 53 Resolver, Cloud Map, Global Accelerator |
+| Contenedores y cómputo | ECS, EC2, Lightsail, EKS, MWAA, ECR, EFS, CodeBuild, CodeDeploy, CodePipeline, CodeGuru Reviewer, CodeArtifact, AWS Batch, Auto Scaling, Application Auto Scaling, Elastic Beanstalk, ELB v2, ELB Classic |
+| Datos, analítica e IA | Athena, Glue, Lake Formation, EMR, EMR Serverless, Redshift, Redshift Data API, Redshift Serverless, Firehose, Managed Service for Apache Flink, OpenSearch, S3 Tables, S3 Vectors, Textract, Transcribe, Comprehend, Rekognition, Translate, Bedrock, Bedrock Runtime, Bedrock AgentCore, Bedrock AgentCore Control, SageMaker |
+| Bases de datos y caché | Aurora DSQL, RDS, RDS Data API, Neptune, DocumentDB, DMS, MemoryDB, ElastiCache, Timestream for InfluxDB |
+| Mensajería y transferencia | SES, Kinesis, MSK, Amazon MQ, Transfer Family, DataSync, IoT Core, Amazon Connect, Amazon AppIntegrations |
+| Seguridad y gobernanza | AWS Network Firewall, AWS RAM, Service Quotas, WAF v2, GuardDuty, Amazon Inspector, CloudTrail, CloudFront, Resource Groups Tagging API, Resource Explorer 2, CloudHSM v2, Organizations, AWS Account Management, IAM Access Analyzer, IAM Identity Center (SSO Admin, OIDC, Access Portal, SCIM), Identity Store, Amazon Macie, Amazon Detective, Security Hub, Amazon Verified Permissions, Control Catalog, Control Tower, Service Catalog, AWS Marketplace |
+| Costes y facturación | AWS Budgets, Pricing, Cost Explorer, Cost and Usage Reports, BCM Pricing Calculator, BCM Data Exports |
+| Resiliencia, copias de seguridad y configuración | AWS FIS, AWS Backup, Amazon Data Lifecycle Manager, AWS Config, AppConfig, AppConfigData, CloudFormation, Cloud Control API |
 
-For operation-level compatibility, see the [Services Overview](https://floci.io/floci/services/).
+Para la compatibilidad a nivel de operación, consulta el [resumen de servicios](https://floci.io/floci/services/).
 
 <details>
-<summary>Detailed service notes</summary>
+<summary>Notas detalladas por servicio</summary>
 
-| Service | How it works | Notable features |
+"En proceso" significa que el servicio se emula dentro del propio proceso de Floci; "Docker real" significa que se levanta un contenedor real.
+
+| Servicio | Cómo funciona | Funciones destacadas |
 |---|---|---|
-| SSM | In-process + EC2 containers | Parameter Store (version history, labels, SecureString, tagging); Run Command (SendCommand, GetCommandInvocation, direct EC2 container execution, agent polling) |
-| SQS | In-process | Standard and FIFO queues, DLQ, visibility timeout, batch operations, tagging |
-| SNS | In-process | Topics, subscriptions, SQS, Lambda and HTTP delivery, tagging |
-| S3 | In-process | Versioning, multipart upload, pre-signed URLs, Object Lock, object annotations, event notifications |
-| S3 Vectors | In-process | Vector buckets, indexes, put / get / list / delete vectors, cosine similarity queries |
-| DynamoDB | In-process | GSI, LSI, Query, Scan, TTL, transactions, batch operations; Streams with shard iterators and Lambda event source mapping |
-| Lambda | Real Docker | Runtime environment, execution model, warm container pool, aliases, Function URLs |
-| API Gateway REST | In-process | Resources, methods, stages, Lambda proxy, MOCK integrations, AWS integrations |
-| API Gateway v2 | In-process | HTTP APIs, routes, integrations, JWT authorizers, stages |
-| AppSync | In-process | GraphQL API management API, schema registry, AWS scalars, domain names, channel namespaces |
-| IAM | In-process | Users, roles, groups, policies, instance profiles, access keys; STS AssumeRole, WebIdentity, SAML, GetFederationToken, GetSessionToken |
-| Cognito | In-process | User pools, app clients, auth flows, JWKS and OpenID well-known endpoints |
-| KMS | In-process | Encrypt, decrypt, sign, verify, data keys, aliases |
-| Payment Cryptography | In-process | Keys with real AES-256 material and check values, aliases, tagging |
-| Kinesis | In-process | Streams, shards, enhanced fan-out, split and merge |
-| Secrets Manager | In-process | Versioning, resource policies, tagging |
-| Step Functions | In-process | ASL execution, task tokens, execution history |
-| SWF | In-process | Decision and activity tasks, timers, child workflows, timeouts, real Lambda invocation |
-| CloudFormation | In-process | Stacks, change sets, resource provisioning, StackSets (cross-account instances) |
-| EventBridge | In-process | Custom buses, rules, SQS, SNS and Lambda targets |
-| EventBridge V2 | In-process | Event buses and filtered subscribers delivering to SQS |
-| EventBridge Pipes | In-process | Poller-based integration connecting SQS, Kinesis, DynamoDB, and MSK sources to targets with optional filtering |
-| EventBridge Scheduler | In-process | Schedule groups, schedules, flexible time windows, retry policies, DLQs |
-| CloudWatch Logs | In-process | Log groups, streams, ingestion, filtering |
-| CloudWatch Metrics | In-process | Custom metrics, statistics, alarms |
-| CloudWatch OAM | In-process | Full 15-operation sink, policy, cross-account link, and tagging API |
-| ElastiCache | Real Docker | Redis / Valkey protocol, IAM auth, SigV4 validation |
-| MemoryDB | Real Docker | Redis / Valkey protocol via real containers; JSON 1.1 control plane; reuses ElastiCache RESP proxy |
-| Aurora DSQL | Real Docker, mock mode available | PostgreSQL 16 per cluster behind a TLS endpoint with IAM token auth, `AWS IAM GRANT` role mappings; not yet DSQL's limits and async indexes |
-| RDS | Real Docker | PostgreSQL, MySQL, MariaDB, IAM auth, JDBC-compatible engines |
-| Timestream for InfluxDB | Real Docker, mock mode available | InfluxDB 2.x DB instances and read replica clusters via `influxdb:2.7`; initial auth secret in Secrets Manager; backups and restore through the influx CLI |
-| RDS Data API | REST JSON over real RDS containers | Raw SQL execution and transactions for local MySQL / MariaDB RDS resources |
-| Neptune | Real Docker | Graph DB via TinkerPop Gremlin Server (default) or Neo4j for openCypher/Bolt (`NEPTUNE_DB_TYPE`); RDS-shaped control plane; SigV4 proxy on port 8182 |
-| DocumentDB | Real Docker, mock mode available | MongoDB-compatible cluster via real MongoDB containers; RDS-shaped control plane; MongoDB wire protocol on port 27017 |
-| MSK | Real Docker | Kafka-compatible broker via Redpanda |
-| Amazon MQ | Real Docker | RabbitMQ broker via rabbitmq:3-management; AMQP + management console |
-| Athena | In-process with DuckDB sidecar | Real SQL execution over S3 and Glue-backed views |
-| Glue | In-process | Data Catalog, Schema Registry, tables consumed by Athena |
-| EMR | In-process | Cluster (job flow) lifecycle, instance groups and fleets (including resizing), bootstrap actions, steps, security configurations, scaling and termination policies, block public access, tagging |
-| Data Firehose | In-process | Streaming delivery, buffered flush to S3 with GZIP/ZIP/Snappy compression |
-| Managed Service for Apache Flink | Real Docker | Kinesis Analytics V2 control plane; StartApplication runs a real Flink cluster (JobManager + TaskManager, image per RuntimeEnvironment), pulls the application JAR from local S3, and submits the job |
-| ECS | Real Docker | Clusters, task definitions, tasks, services, capacity providers, task sets |
-| EC2 | Real Docker | RunInstances launches containers, SSH key injection, UserData, IMDS, VPC resources |
-| Lightsail | In-process | Instances, disks, static IPs, key pairs, ports, tags, regions, blueprints, bundles, operations |
-| ACM | In-process | Certificate issuance and validation lifecycle |
-| ECR | In-process with real registry | Repositories, docker push / pull, image-backed Lambda functions |
-| Resource Groups Tagging API | In-process | GetResources, tag and untag resources, tag key and value discovery across services |
-| SES | In-process | v1 and v2 APIs: send email, raw email, identity verification, DKIM, templates, configuration sets, account sending |
-| OpenSearch | Real Docker | Domain CRUD, tags, versions, instance types, upgrade stubs |
-| AppConfig | In-process | Applications, environments, profiles, hosted versions, deployments |
-| AppConfigData | In-process | Configuration sessions and dynamic configuration retrieval |
-| Bedrock | In-process | Guardrail lifecycle, versions, and tags on the control plane |
-| Bedrock Runtime | In-process stub | Dummy Converse and InvokeModel responses for local development |
-| Bedrock AgentCore | In-process stub | Stateful control plane (agent runtimes, gateways, memory, workload identity); canned InvokeAgentRuntime responses |
-| EKS | Real Docker, mock mode available | k3s clusters with live Kubernetes API server |
-| MWAA | Real Docker, mock mode available | Real Apache Airflow (LocalExecutor) + Postgres metadata DB per environment; web/CLI proxy; S3-backed DAG sync |
-| ELB v2 | In-process | ALB, NLB, target groups, listeners, routing rules, Lambda targets, tags |
-| CodeBuild | In-process with real Docker | Real buildspec execution, CloudWatch logs, S3 artifacts |
-| CodeDeploy | In-process with Lambda traffic shifting | Deployment groups, configs, lifecycle hooks, auto-rollback |
-| CodePipeline | In-process orchestration | Pipelines, executions, S3 artifacts, approvals, local providers, custom workers |
-| AWS Network Firewall | In-process | DescribeFirewall with stable emulated endpoint attachments for infrastructure tooling |
-| Service Quotas | In-process | Generated quota catalog with generous static values; real quota codes for CodeBuild and Lambda concurrency |
-| AWS RAM | In-process | EnableSharingWithAwsOrganization opt-in |
-| AWS Batch | In-process | Compute environments, job queues, job definitions, job submission and lifecycle |
-| Auto Scaling | In-process with reconciler | Launch configs, ASGs, desired capacity reconciliation, lifecycle hooks |
-| Application Auto Scaling | In-process | Scalable targets, target-tracking and step scaling policies, CloudWatch alarm creation, tagging (policies are stored but inert) |
-| Elastic Beanstalk | In-process | Applications, application versions, environments, configuration templates, platform and solution stack metadata |
-| AWS Backup | In-process | Vaults, backup plans, selections, simulated job lifecycle, recovery points |
-| Amazon Data Lifecycle Manager | In-process | Lifecycle policy and tag management; schedules are stored but do not create snapshots or AMIs |
-| AWS FIS | In-process | All 26 management APIs for templates, experiments, target accounts, action and target discovery, safety lever, tagging, and pagination; experiment execution is a safe control-plane simulation and does not inject faults into other services |
-| AWS Config | In-process | Config rules, evaluation-driven compliance (PutEvaluations, compliance details and summaries), configuration recorders, delivery channels, retention configuration, conformance packs, tagging |
-| Organizations | In-process | Organizations, roots, nested OUs, member accounts, all policy types with `FullAWSAccess` and effective-policy inheritance, trusted service access, delegated administrators, resource policy, and the full invitation/handshake flow; created accounts are usable Floci accounts and member accounts can read the organization they belong to |
-| CloudTrail | In-process | Trails, event selectors (S3 data events with bucket/prefix matching), `StartLogging`/`StopLogging`, scheduled gzipped log file emission to the destination bucket at AWS-shaped key paths, IAM-deny path emits `AccessDenied` records |
-| CloudFront | In-process | Distributions, origins, cache behaviors, invalidations, tagging |
-| WAF v2 | In-process | Web ACLs, IP sets, regex pattern sets, rule groups, logging configs, resource associations, tagging (REGIONAL and CLOUDFRONT scopes) |
-| AWS Resource Groups | In-process | Five capacity-pool operations: stored groups, verified EC2 reservation membership, scoped pagination and group deletion; no dynamic queries or capacity allocation |
-| Resource Explorer 2 | In-process | All 32 management APIs: index and view lifecycle, multi-Region setup tasks, the full search query grammar, and tagging; 30 services expose their resources for search, gathered live rather than from an index |
-| Route53 | In-process | Hosted zones, SOA and NS records, resource record sets, change tracking, tagging |
-| Cloud Map | In-process | HTTP and DNS namespaces, services, instance registration, discovery queries, operations, tagging |
-| Transfer Family | In-process | Server lifecycle, user management, SSH key import, tagging |
-| Textract | In-process stub | API-compatible stubs, dummy block data, async job simulation |
-| Transcribe | In-process stub | Transcription jobs and custom vocabularies; jobs complete immediately, no real audio processing |
-| Pricing | In-process with static snapshot | Product discovery, attributes, price list files, pagination |
-| Cost Explorer | In-process | Cost synthesized from Floci resource state and pricing snapshots |
-| Cost and Usage Reports | In-process with floci-duck sidecar | CUR 2.0 and FOCUS 1.2 columns, account-scoped storage, Parquet emission |
-| BCM Pricing Calculator | In-process | Workload estimate create, usage pricing, read, and delete lifecycle |
-| BCM Data Exports | In-process | Export lifecycle, executions, update and delete operations |
+| SSM | En proceso + contenedores EC2 | Parameter Store (historial de versiones, etiquetas, SecureString, tags); Run Command (SendCommand, GetCommandInvocation, ejecución directa en contenedores EC2, sondeo del agente) |
+| SQS | En proceso | Colas estándar y FIFO, DLQ, timeout de visibilidad, operaciones por lotes, tags |
+| SNS | En proceso | Topics, suscripciones, entrega a SQS, Lambda y HTTP, tags |
+| S3 | En proceso | Versionado, subida multiparte, URLs prefirmadas, Object Lock, anotaciones de objetos, notificaciones de eventos |
+| S3 Vectors | En proceso | Buckets de vectores, índices, put / get / list / delete de vectores, consultas por similitud coseno |
+| DynamoDB | En proceso | GSI, LSI, Query, Scan, TTL, transacciones, operaciones por lotes; Streams con iteradores de shard y mapeo de eventos a Lambda |
+| Lambda | Docker real | Entorno de ejecución, modelo de ejecución, pool de contenedores calientes, alias, Function URLs |
+| API Gateway REST | En proceso | Recursos, métodos, stages, proxy a Lambda, integraciones MOCK y AWS |
+| API Gateway v2 | En proceso | HTTP APIs, rutas, integraciones, autorizadores JWT, stages |
+| AppSync | En proceso | API de gestión de APIs GraphQL, registro de esquemas, escalares de AWS, nombres de dominio, namespaces de canales |
+| IAM | En proceso | Usuarios, roles, grupos, políticas, perfiles de instancia, claves de acceso; STS AssumeRole, WebIdentity, SAML, GetFederationToken, GetSessionToken |
+| Cognito | En proceso | User pools, clientes de aplicación, flujos de autenticación, endpoints JWKS y OpenID well-known |
+| KMS | En proceso | Cifrar, descifrar, firmar, verificar, claves de datos, alias |
+| Payment Cryptography | En proceso | Claves con material AES-256 real y valores de comprobación, alias, tags |
+| Kinesis | En proceso | Streams, shards, enhanced fan-out, división y fusión |
+| Secrets Manager | En proceso | Versionado, políticas de recurso, tags |
+| Step Functions | En proceso | Ejecución de ASL, task tokens, historial de ejecuciones |
+| SWF | En proceso | Tareas de decisión y actividad, temporizadores, workflows hijos, timeouts, invocación real de Lambda |
+| CloudFormation | En proceso | Stacks, change sets, aprovisionamiento de recursos, StackSets (instancias entre cuentas) |
+| EventBridge | En proceso | Buses personalizados, reglas, destinos SQS, SNS y Lambda |
+| EventBridge V2 | En proceso | Buses de eventos y suscriptores filtrados que entregan a SQS |
+| EventBridge Pipes | En proceso | Integración por sondeo que conecta fuentes SQS, Kinesis, DynamoDB y MSK con destinos, con filtrado opcional |
+| EventBridge Scheduler | En proceso | Grupos de programación, programaciones, ventanas de tiempo flexibles, políticas de reintento, DLQs |
+| CloudWatch Logs | En proceso | Grupos de logs, streams, ingesta, filtrado |
+| CloudWatch Metrics | En proceso | Métricas personalizadas, estadísticas, alarmas |
+| CloudWatch OAM | En proceso | API completa de 15 operaciones: sinks, políticas, enlaces entre cuentas y tags |
+| ElastiCache | Docker real | Protocolo Redis / Valkey, autenticación IAM, validación SigV4 |
+| MemoryDB | Docker real | Protocolo Redis / Valkey con contenedores reales; plano de control JSON 1.1; reutiliza el proxy RESP de ElastiCache |
+| Aurora DSQL | Docker real, modo mock disponible | PostgreSQL 16 por clúster detrás de un endpoint TLS con autenticación por token IAM, mapeos de roles `AWS IAM GRANT`; todavía sin los límites ni los índices asíncronos de DSQL |
+| RDS | Docker real | PostgreSQL, MySQL, MariaDB, autenticación IAM, motores compatibles con JDBC |
+| Timestream for InfluxDB | Docker real, modo mock disponible | Instancias InfluxDB 2.x y clústeres de réplicas de lectura con `influxdb:2.7`; secreto de autenticación inicial en Secrets Manager; copias de seguridad y restauración con la CLI de influx |
+| RDS Data API | REST JSON sobre contenedores RDS reales | Ejecución de SQL y transacciones para recursos RDS locales MySQL / MariaDB |
+| Neptune | Docker real | BD de grafos con TinkerPop Gremlin Server (por defecto) o Neo4j para openCypher/Bolt (`NEPTUNE_DB_TYPE`); plano de control al estilo RDS; proxy SigV4 en el puerto 8182 |
+| DocumentDB | Docker real, modo mock disponible | Clúster compatible con MongoDB usando contenedores MongoDB reales; plano de control al estilo RDS; protocolo MongoDB en el puerto 27017 |
+| MSK | Docker real | Broker compatible con Kafka mediante Redpanda |
+| Amazon MQ | Docker real | Broker RabbitMQ con rabbitmq:3-management; AMQP + consola de gestión |
+| Athena | En proceso con sidecar DuckDB | Ejecución real de SQL sobre S3 y vistas respaldadas por Glue |
+| Glue | En proceso | Data Catalog, Schema Registry, tablas consumidas por Athena |
+| EMR | En proceso | Ciclo de vida de clústeres (job flows), grupos y flotas de instancias (incluido redimensionado), acciones de arranque, steps, configuraciones de seguridad, políticas de escalado y terminación, bloqueo de acceso público, tags |
+| Data Firehose | En proceso | Entrega en streaming, volcado con buffer a S3 con compresión GZIP/ZIP/Snappy |
+| Managed Service for Apache Flink | Docker real | Plano de control de Kinesis Analytics V2; StartApplication levanta un clúster Flink real (JobManager + TaskManager, imagen según RuntimeEnvironment), descarga el JAR de la aplicación desde el S3 local y envía el job |
+| ECS | Docker real | Clústeres, definiciones de tareas, tareas, servicios, proveedores de capacidad, task sets |
+| EC2 | Docker real | RunInstances lanza contenedores, inyección de claves SSH, UserData, IMDS, recursos de VPC |
+| Lightsail | En proceso | Instancias, discos, IPs estáticas, pares de claves, puertos, tags, regiones, blueprints, bundles, operaciones |
+| ACM | En proceso | Ciclo de vida de emisión y validación de certificados |
+| ECR | En proceso con registro real | Repositorios, docker push / pull, funciones Lambda basadas en imágenes |
+| Resource Groups Tagging API | En proceso | GetResources, etiquetar y desetiquetar recursos, descubrimiento de claves y valores de tags entre servicios |
+| SES | En proceso | APIs v1 y v2: envío de correo, correo raw, verificación de identidades, DKIM, plantillas, configuration sets, envío a nivel de cuenta |
+| OpenSearch | Docker real | CRUD de dominios, tags, versiones, tipos de instancia, stubs de actualización |
+| AppConfig | En proceso | Aplicaciones, entornos, perfiles, versiones alojadas, despliegues |
+| AppConfigData | En proceso | Sesiones de configuración y obtención dinámica de configuración |
+| Bedrock | En proceso | Ciclo de vida, versiones y tags de guardrails en el plano de control |
+| Bedrock Runtime | Stub en proceso | Respuestas ficticias de Converse e InvokeModel para desarrollo local |
+| Bedrock AgentCore | Stub en proceso | Plano de control con estado (runtimes de agentes, gateways, memoria, identidad de cargas de trabajo); respuestas predefinidas de InvokeAgentRuntime |
+| EKS | Docker real, modo mock disponible | Clústeres k3s con API server de Kubernetes funcionando |
+| MWAA | Docker real, modo mock disponible | Apache Airflow real (LocalExecutor) + BD de metadatos Postgres por entorno; proxy web/CLI; sincronización de DAGs desde S3 |
+| ELB v2 | En proceso | ALB, NLB, target groups, listeners, reglas de enrutamiento, destinos Lambda, tags |
+| CodeBuild | En proceso con Docker real | Ejecución real de buildspec, logs en CloudWatch, artefactos en S3 |
+| CodeDeploy | En proceso con desvío de tráfico en Lambda | Grupos de despliegue, configuraciones, hooks de ciclo de vida, rollback automático |
+| CodePipeline | Orquestación en proceso | Pipelines, ejecuciones, artefactos en S3, aprobaciones, proveedores locales, workers personalizados |
+| AWS Network Firewall | En proceso | DescribeFirewall con endpoints emulados estables para herramientas de infraestructura |
+| Service Quotas | En proceso | Catálogo de cuotas generado con valores estáticos generosos; códigos de cuota reales para CodeBuild y concurrencia de Lambda |
+| AWS RAM | En proceso | Activación de EnableSharingWithAwsOrganization |
+| AWS Batch | En proceso | Entornos de cómputo, colas de jobs, definiciones de jobs, envío y ciclo de vida de jobs |
+| Auto Scaling | En proceso con reconciliador | Launch configs, ASGs, reconciliación de capacidad deseada, hooks de ciclo de vida |
+| Application Auto Scaling | En proceso | Scalable targets, políticas de target-tracking y por pasos, creación de alarmas en CloudWatch, tags (las políticas se guardan pero no actúan) |
+| Elastic Beanstalk | En proceso | Aplicaciones, versiones de aplicación, entornos, plantillas de configuración, metadatos de plataformas y solution stacks |
+| AWS Backup | En proceso | Vaults, planes de backup, selecciones, ciclo de vida simulado de jobs, puntos de recuperación |
+| Amazon Data Lifecycle Manager | En proceso | Gestión de políticas de ciclo de vida y tags; las programaciones se guardan pero no crean snapshots ni AMIs |
+| AWS FIS | En proceso | Las 26 APIs de gestión de plantillas, experimentos, cuentas destino, descubrimiento de acciones y destinos, safety lever, tags y paginación; la ejecución de experimentos es una simulación segura del plano de control y no inyecta fallos en otros servicios |
+| AWS Config | En proceso | Reglas de Config, cumplimiento basado en evaluaciones (PutEvaluations, detalles y resúmenes de cumplimiento), grabadores de configuración, canales de entrega, configuración de retención, conformance packs, tags |
+| Organizations | En proceso | Organizaciones, raíces, OUs anidadas, cuentas miembro, todos los tipos de políticas con `FullAWSAccess` y herencia de política efectiva, acceso de servicios de confianza, administradores delegados, política de recurso y el flujo completo de invitaciones/handshake; las cuentas creadas son cuentas Floci utilizables y las cuentas miembro pueden leer la organización a la que pertenecen |
+| CloudTrail | En proceso | Trails, selectores de eventos (eventos de datos de S3 con coincidencia por bucket/prefijo), `StartLogging`/`StopLogging`, emisión programada de archivos de log comprimidos con gzip al bucket destino con rutas al estilo AWS; las denegaciones de IAM generan registros `AccessDenied` |
+| CloudFront | En proceso | Distribuciones, orígenes, comportamientos de caché, invalidaciones, tags |
+| WAF v2 | En proceso | Web ACLs, IP sets, conjuntos de patrones regex, grupos de reglas, configuraciones de logging, asociaciones de recursos, tags (ámbitos REGIONAL y CLOUDFRONT) |
+| AWS Resource Groups | En proceso | Cinco operaciones de pools de capacidad: grupos guardados, pertenencia verificada de reservas EC2, paginación por ámbito y borrado de grupos; sin consultas dinámicas ni asignación de capacidad |
+| Resource Explorer 2 | En proceso | Las 32 APIs de gestión: ciclo de vida de índices y vistas, tareas de configuración multirregión, la gramática completa de consultas de búsqueda y tags; 30 servicios exponen sus recursos para búsqueda, obtenidos en vivo en lugar de desde un índice |
+| Route53 | En proceso | Zonas alojadas, registros SOA y NS, conjuntos de registros, seguimiento de cambios, tags |
+| Cloud Map | En proceso | Namespaces HTTP y DNS, servicios, registro de instancias, consultas de descubrimiento, operaciones, tags |
+| Transfer Family | En proceso | Ciclo de vida de servidores, gestión de usuarios, importación de claves SSH, tags |
+| Textract | Stub en proceso | Stubs compatibles con la API, datos de bloques ficticios, simulación de jobs asíncronos |
+| Transcribe | Stub en proceso | Jobs de transcripción y vocabularios personalizados; los jobs terminan al instante, sin procesar audio real |
+| Pricing | En proceso con snapshot estático | Descubrimiento de productos, atributos, archivos de listas de precios, paginación |
+| Cost Explorer | En proceso | Costes sintetizados a partir del estado de los recursos en Floci y snapshots de precios |
+| Cost and Usage Reports | En proceso con sidecar floci-duck | Columnas CUR 2.0 y FOCUS 1.2, almacenamiento por cuenta, emisión en Parquet |
+| BCM Pricing Calculator | En proceso | Ciclo de vida de estimaciones de carga de trabajo: creación, precios de uso, lectura y borrado |
+| BCM Data Exports | En proceso | Ciclo de vida de exportaciones, ejecuciones, actualización y borrado |
 
 </details>
 
-## Real Docker Integration
+## Integración con Docker real
 
-Floci uses real Docker containers when in-process emulation would reduce fidelity. This applies to stateful databases, connection-heavy protocols, runtimes, and build systems.
+Floci usa contenedores Docker reales cuando la emulación dentro del proceso reduciría la fidelidad. Esto se aplica a bases de datos con estado, protocolos con muchas conexiones, entornos de ejecución y sistemas de build.
 
-| Service | Default image | What is real |
+| Servicio | Imagen por defecto | Qué es real |
 |---|---|---|
-| Lambda | `public.ecr.aws/lambda/<runtime>` | AWS runtime environment, execution model, warm container pool |
-| ElastiCache | `valkey/valkey:8` | Redis / Valkey protocol, ACL-based IAM auth, SigV4 validation |
-| RDS PostgreSQL | `postgres:16-alpine` | PostgreSQL engine, IAM auth, JDBC-compatible access |
-| RDS MySQL / Aurora | `mysql:8.0` | MySQL engine, IAM auth, JDBC-compatible access |
-| RDS MariaDB | `mariadb:11` | MariaDB engine, IAM auth, JDBC-compatible access |
-| Neptune | `tinkerpop/gremlin-server:3.7.3` | TinkerPop Gremlin Server; Gremlin WebSocket on port 8182; SigV4 auth proxy |
-| Neptune (openCypher) | `neo4j:5-community` | Neo4j backend when `FLOCI_SERVICES_NEPTUNE_DB_TYPE=neo4j`; openCypher over Bolt |
-| DocumentDB | `mongo:7.0` | MongoDB engine; MongoDB wire protocol on port 27017 |
-| MSK | `redpandadata/redpanda:latest` | Kafka-compatible broker via Redpanda |
-| Amazon MQ | `rabbitmq:3-management` | RabbitMQ broker; AMQP on port 5672, management console on 15672 |
-| Managed Service for Apache Flink | `apache/flink:<version>` | Apache Flink JobManager; image chosen per RuntimeEnvironment (FLINK-1_15 … FLINK-1_20, FLINK-2_0 … FLINK-2_3) |
-| EC2 | AMI-mapped Linux images | Linux containers, SSH key injection, UserData, IMDS, IAM credentials |
-| ECS | User-specified task image | Container lifecycle, start, stop, health checks |
-| EKS | `rancher/k3s:latest` | Kubernetes API server via k3s |
-| MWAA | `apache/airflow:<version>-python3.12` + `postgres:16-alpine` | Real Apache Airflow (LocalExecutor: scheduler + webserver) with its own Postgres metadata DB; webserver/CLI reachable via Floci's proxy |
-| CodeBuild | User-specified environment image | Buildspec execution, log streaming, S3 artifact upload |
-| OpenSearch | `opensearchproject/opensearch:2` | Full OpenSearch engine with REST API |
-| ECR | `registry:2` | OCI-compatible registry for docker push and docker pull |
-| Verified Permissions | `floci/floci-sidecar-cedar:1.1.0` | Cedar 4 policy parsing, schema validation and authorization decisions, via a [Floci sidecar](https://github.com/floci-io/floci-sidecars) |
-| AppSync | `floci/floci-sidecar-graphql:0.2.0` | graphql-java schema validation, query planning and execution, via a [Floci sidecar](https://github.com/floci-io/floci-sidecars) |
+| Lambda | `public.ecr.aws/lambda/<runtime>` | Entorno de ejecución de AWS, modelo de ejecución, pool de contenedores calientes |
+| ElastiCache | `valkey/valkey:8` | Protocolo Redis / Valkey, autenticación IAM basada en ACL, validación SigV4 |
+| RDS PostgreSQL | `postgres:16-alpine` | Motor PostgreSQL, autenticación IAM, acceso compatible con JDBC |
+| RDS MySQL / Aurora | `mysql:8.0` | Motor MySQL, autenticación IAM, acceso compatible con JDBC |
+| RDS MariaDB | `mariadb:11` | Motor MariaDB, autenticación IAM, acceso compatible con JDBC |
+| Neptune | `tinkerpop/gremlin-server:3.7.3` | TinkerPop Gremlin Server; WebSocket Gremlin en el puerto 8182; proxy de autenticación SigV4 |
+| Neptune (openCypher) | `neo4j:5-community` | Backend Neo4j cuando `FLOCI_SERVICES_NEPTUNE_DB_TYPE=neo4j`; openCypher sobre Bolt |
+| DocumentDB | `mongo:7.0` | Motor MongoDB; protocolo MongoDB en el puerto 27017 |
+| MSK | `redpandadata/redpanda:latest` | Broker compatible con Kafka mediante Redpanda |
+| Amazon MQ | `rabbitmq:3-management` | Broker RabbitMQ; AMQP en el puerto 5672, consola de gestión en el 15672 |
+| Managed Service for Apache Flink | `apache/flink:<version>` | JobManager de Apache Flink; imagen elegida según RuntimeEnvironment (FLINK-1_15 … FLINK-1_20, FLINK-2_0 … FLINK-2_3) |
+| EC2 | Imágenes Linux mapeadas a AMIs | Contenedores Linux, inyección de claves SSH, UserData, IMDS, credenciales IAM |
+| ECS | Imagen de tarea indicada por el usuario | Ciclo de vida de contenedores, arranque, parada, health checks |
+| EKS | `rancher/k3s:latest` | API server de Kubernetes mediante k3s |
+| MWAA | `apache/airflow:<version>-python3.12` + `postgres:16-alpine` | Apache Airflow real (LocalExecutor: scheduler + webserver) con su propia BD de metadatos Postgres; webserver/CLI accesibles mediante el proxy de Floci |
+| CodeBuild | Imagen de entorno indicada por el usuario | Ejecución de buildspec, streaming de logs, subida de artefactos a S3 |
+| OpenSearch | `opensearchproject/opensearch:2` | Motor OpenSearch completo con API REST |
+| ECR | `registry:2` | Registro compatible con OCI para docker push y docker pull |
+| Verified Permissions | `floci/floci-sidecar-cedar:1.1.0` | Análisis de políticas Cedar 4, validación de esquemas y decisiones de autorización, mediante un [sidecar de Floci](https://github.com/floci-io/floci-sidecars) |
+| AppSync | `floci/floci-sidecar-graphql:0.2.0` | Validación de esquemas, planificación y ejecución de consultas con graphql-java, mediante un [sidecar de Floci](https://github.com/floci-io/floci-sidecars) |
 
-Docker-backed services require the Docker socket:
+Los servicios basados en Docker necesitan el socket de Docker:
 
 ```bash
 docker run -d --name floci \
@@ -441,17 +446,17 @@ docker run -d --name floci \
   floci/floci:latest
 ```
 
-### Overriding default images
+### Cambiar las imágenes por defecto
 
-| Variable | Default |
+| Variable | Valor por defecto |
 |---|---|
 | `FLOCI_SERVICES_ELASTICACHE_DEFAULT_IMAGE` | `valkey/valkey:8` |
 | `FLOCI_SERVICES_RDS_DEFAULT_POSTGRES_IMAGE` | `postgres:16-alpine` |
 | `FLOCI_SERVICES_RDS_DEFAULT_MYSQL_IMAGE` | `mysql:8.0` |
 | `FLOCI_SERVICES_RDS_DEFAULT_MARIADB_IMAGE` | `mariadb:11` |
 | `FLOCI_SERVICES_MSK_DEFAULT_IMAGE` | `redpandadata/redpanda:latest` |
-| `FLOCI_SERVICES_OPENSEARCH_DEFAULT_IMAGE` | *(unset — images resolve per requested `EngineVersion`)* |
-| `FLOCI_SERVICES_KINESIS_ANALYTICS_DEFAULT_IMAGE` | _(unset; chosen per RuntimeEnvironment)_ |
+| `FLOCI_SERVICES_OPENSEARCH_DEFAULT_IMAGE` | *(sin definir: las imágenes se eligen según el `EngineVersion` solicitado)* |
+| `FLOCI_SERVICES_KINESIS_ANALYTICS_DEFAULT_IMAGE` | _(sin definir; se elige según RuntimeEnvironment)_ |
 | `FLOCI_SERVICES_NEPTUNE_DEFAULT_IMAGE` | `tinkerpop/gremlin-server:3.7.3` |
 | `FLOCI_SERVICES_NEPTUNE_DEFAULT_NEO4J_IMAGE` | `neo4j:5-community` |
 | `FLOCI_SERVICES_DOCDB_DEFAULT_IMAGE` | `mongo:7.0` |
@@ -460,39 +465,39 @@ docker run -d --name floci \
 | `FLOCI_SERVICES_ECR_REGISTRY_IMAGE` | `registry:2` |
 | `FLOCI_SERVICES_LAMBDA_ECR_BASE_URI` | `public.ecr.aws` |
 
-## Persistence and Storage Modes
+## Persistencia y modos de almacenamiento
 
-Floci can trade speed for durability depending on the workflow. Configure the default mode with `FLOCI_STORAGE_MODE`, or override storage per service.
+Floci puede priorizar velocidad o durabilidad según tu flujo de trabajo. Configura el modo por defecto con `FLOCI_STORAGE_MODE`, o cámbialo por servicio.
 
-| Mode | Behavior | Best for | Durability |
+| Modo | Comportamiento | Ideal para | Durabilidad |
 |---|---|---|:---:|
-| `memory` | Entirely in RAM. Data is lost when the container stops. | CI and ephemeral tests | None |
-| `persistent` | Loaded at startup and flushed to disk immediately on every write operation. | Simple local state preservation with immediate persistence | Medium |
-| `hybrid` | In-memory performance with periodic async flushing every 5 seconds. | Local development | Good |
-| `wal` | Write-ahead log. Every mutation is logged before responding. | Maximum durability | Highest |
+| `memory` | Todo en RAM. Los datos se pierden al detener el contenedor. | CI y pruebas efímeras | Ninguna |
+| `persistent` | Se carga al arrancar y se escribe en disco inmediatamente en cada operación de escritura. | Conservar el estado local de forma sencilla con persistencia inmediata | Media |
+| `hybrid` | Rendimiento de memoria con volcado asíncrono periódico cada 5 segundos. | Desarrollo local | Buena |
+| `wal` | Registro de escritura anticipada (*write-ahead log*). Cada cambio se registra antes de responder. | Máxima durabilidad | La más alta |
 
-Use `memory` for fast test runs. Use `hybrid` when you want state preserved across container restarts without much overhead.
+Usa `memory` para ejecuciones de tests rápidas. Usa `hybrid` si quieres conservar el estado entre reinicios del contenedor sin mucha sobrecarga.
 
-For more detail, see the [Storage Configuration documentation](https://floci.io/floci/configuration/storage/).
+Para más detalle, consulta la [documentación de configuración de almacenamiento](https://floci.io/floci/configuration/storage/).
 
-## Multi-Account Isolation
+## Aislamiento entre cuentas
 
-Floci supports per-account resource isolation with no extra setup. If `AWS_ACCESS_KEY_ID` is exactly 12 digits, Floci uses it as the account ID. Resources created by one account are invisible to another.
+Floci aísla los recursos por cuenta sin configuración adicional. Si `AWS_ACCESS_KEY_ID` tiene exactamente 12 dígitos, Floci lo usa como ID de cuenta. Los recursos creados por una cuenta son invisibles para otra.
 
 ```bash
 AWS_ACCESS_KEY_ID=111111111111 aws sqs create-queue --queue-name orders
 AWS_ACCESS_KEY_ID=222222222222 aws sqs create-queue --queue-name orders
 ```
 
-Any other key format, such as `test` or `AKIA...`, causes Floci to fall back to `FLOCI_DEFAULT_ACCOUNT_ID`, which defaults to `000000000000`.
+Con cualquier otro formato de clave, como `test` o `AKIA...`, Floci usa `FLOCI_DEFAULT_ACCOUNT_ID`, que por defecto es `000000000000`.
 
-STS temporary credentials are routed too: credentials from `AssumeRole` resolve to the assumed role's account, so the cross-account assume-role-then-provision pattern works locally. Resolution precedence is 12-digit AKID → temporary-session lookup → `FLOCI_DEFAULT_ACCOUNT_ID`.
+Las credenciales temporales de STS también se enrutan: las obtenidas con `AssumeRole` se resuelven a la cuenta del rol asumido, así que el patrón de "asumir rol en otra cuenta y luego aprovisionar" funciona en local. El orden de resolución es: AKID de 12 dígitos → búsqueda de sesión temporal → `FLOCI_DEFAULT_ACCOUNT_ID`.
 
-See the [Multi-Account Isolation docs](https://floci.io/floci/configuration/multi-account/).
+Consulta la [documentación de aislamiento entre cuentas](https://floci.io/floci/configuration/multi-account/).
 
-## SDK Integration
+## Integración con SDKs
 
-Point your existing AWS SDK at `http://localhost:4566`.
+Apunta tu SDK de AWS de siempre a `http://localhost:4566`.
 
 <details>
 <summary><strong>Java, AWS SDK v2</strong></summary>
@@ -657,17 +662,17 @@ aws --endpoint-url http://localhost:4566 s3 ls
 
 ## Testcontainers
 
-Floci has Testcontainers modules for starting isolated Floci instances directly from tests. This avoids shared state, manual daemon setup, and port conflicts.
+Floci tiene módulos de Testcontainers para levantar instancias aisladas de Floci directamente desde los tests. Así evitas estado compartido, configurar un servicio a mano y conflictos de puertos.
 
-For Testcontainers 1.x, use the versions as indicated in the table below.
+Para Testcontainers 1.x, usa las versiones indicadas en la tabla.
 
-| Language | Package | Latest | Registry | Source |
+| Lenguaje | Paquete | Última versión | Registro | Código fuente |
 |---|---|---|---|---|
 | Java | `io.floci:testcontainers-floci` | `1.14.0` | [Maven Central](https://mvnrepository.com/artifact/io.floci/testcontainers-floci) | [GitHub](https://github.com/floci-io/testcontainers-floci) |
 | Node.js | `@floci/testcontainers` | `0.1.0` | [npm](https://www.npmjs.com/package/@floci/testcontainers) | [GitHub](https://github.com/floci-io/testcontainers-floci-node) |
 | Python | `testcontainers-floci` | `0.1.1` | [PyPI](https://pypi.org/project/testcontainers-floci/) | [GitHub](https://github.com/floci-io/testcontainers-floci-python) |
-| .NET | `Testcontainers.Floci` | see releases | [GitHub Packages](https://github.com/orgs/floci-io/packages?repo_name=testcontainers-floci-dotnet) | [GitHub](https://github.com/floci-io/testcontainers-floci-dotnet) |
-| Go | In progress | In progress | N/A | [GitHub](https://github.com/floci-io/testcontainers-floci-go) |
+| .NET | `Testcontainers.Floci` | ver releases | [GitHub Packages](https://github.com/orgs/floci-io/packages?repo_name=testcontainers-floci-dotnet) | [GitHub](https://github.com/floci-io/testcontainers-floci-dotnet) |
+| Go | En desarrollo | En desarrollo | N/D | [GitHub](https://github.com/floci-io/testcontainers-floci-go) |
 
 <details>
 <summary><strong>Java</strong></summary>
@@ -703,7 +708,7 @@ class S3IntegrationTest {
 }
 ```
 
-For Testcontainers 2.x / Spring Boot 4.x, use version `2.15.0`.
+Para Testcontainers 2.x / Spring Boot 4.x, usa la versión `2.15.0`.
 
 </details>
 
@@ -773,13 +778,13 @@ def test_s3_create_bucket():
 
 </details>
 
-## Compatibility Testing
+## Pruebas de compatibilidad
 
-The [`compatibility-tests`](./compatibility-tests/) directory validates Floci across SDKs and tooling workflows.
+El directorio [`compatibility-tests`](./compatibility-tests/) valida Floci con distintos SDKs y herramientas.
 
-| Module | Language / Tool | SDK / Client | Tests |
+| Módulo | Lenguaje / herramienta | SDK / cliente | Tests |
 |---|---|---|---:|
-| `sdk-test-java` | Java 17 | AWS SDK for Java v2 | 1,326 |
+| `sdk-test-java` | Java 17 | AWS SDK for Java v2 | 1.326 |
 | `sdk-test-node` | Node.js | AWS SDK for JavaScript v3 | 449 |
 | `sdk-test-python` | Python 3 | boto3 | 311 |
 | `sdk-test-go` | Go | AWS SDK for Go v2 + RDS Data API SDK v1 | 157 |
@@ -788,26 +793,26 @@ The [`compatibility-tests`](./compatibility-tests/) directory validates Floci ac
 | `compat-opentofu` | OpenTofu | v1.9+ | 41 |
 | `compat-cdk` | AWS CDK | v2+ | 20 |
 
-**2,576 automated compatibility tests across 5 SDKs and 3 IaC tools.**
+**2.576 tests de compatibilidad automatizados con 5 SDKs y 3 herramientas de IaC.**
 
-## Migrating from LocalStack
+## Migrar desde LocalStack
 
-Floci is a drop-in replacement for LocalStack Community. The port, credentials, SDK configuration, and CLI endpoint pattern work the same way. Swap the image and keep going.
+Floci es un reemplazo directo de LocalStack Community. El puerto, las credenciales, la configuración de los SDKs y el patrón de endpoint de la CLI funcionan igual. Cambia la imagen y listo.
 
 ```yaml
-# Before
+# Antes
 image: localstack/localstack
 
-# After, standard image
+# Después, imagen estándar
 image: floci/floci:latest
 
-# After, if init scripts need AWS CLI or boto3
+# Después, si los scripts de inicio necesitan AWS CLI o boto3
 image: floci/floci:latest-compat
 ```
 
-LocalStack environment variables are translated automatically:
+Las variables de entorno de LocalStack se traducen automáticamente:
 
-| LocalStack | Floci equivalent |
+| LocalStack | Equivalente en Floci |
 |---|---|
 | `LOCALSTACK_HOST` | `FLOCI_HOSTNAME` |
 | `PERSISTENCE=1` | `FLOCI_STORAGE_MODE=persistent` |
@@ -815,67 +820,67 @@ LocalStack environment variables are translated automatically:
 | `LAMBDA_REMOVE_CONTAINERS=1` | `FLOCI_SERVICES_LAMBDA_EPHEMERAL=true` |
 | `DEBUG=1` | `QUARKUS_LOG_LEVEL=DEBUG` |
 
-Init scripts mounted under `/etc/localstack/init/` run unchanged. The `/_localstack/init` and `/_localstack/health` endpoints are still served. Once the emulator is up, the log also ends with a LocalStack-style `Ready.` line, so tooling that watches the log for it, such as the default wait strategy of Testcontainers' `LocalStackContainer`, works unchanged. Set `LOCALSTACK_PARITY=false` to opt out of automatic translation.
+Los scripts de inicio montados en `/etc/localstack/init/` se ejecutan sin cambios. Los endpoints `/_localstack/init` y `/_localstack/health` se siguen sirviendo. Cuando el emulador está listo, el log también termina con una línea `Ready.` al estilo de LocalStack, así que las herramientas que la esperan en el log (como la estrategia de espera por defecto del `LocalStackContainer` de Testcontainers) funcionan sin cambios. Define `LOCALSTACK_PARITY=false` para desactivar la traducción automática.
 
-See the [full migration guide](https://floci.io/floci/getting-started/migrate-from-localstack/).
+Consulta la [guía completa de migración](https://floci.io/floci/getting-started/migrate-from-localstack/).
 
-## Image Tags
+## Etiquetas de imagen
 
-Every tag combines a variant and a channel.
+Cada etiqueta combina una variante y un canal.
 
-| Channel | Standard | Baseline (ARM64 only) | Compat with AWS CLI and boto3 |
+| Canal | Estándar | Baseline (solo ARM64) | Compat con AWS CLI y boto3 |
 |---|---|---|---|
-| Release, floating | `latest` | `latest-baseline` | `latest-compat` |
-| Release, pinned | `x.y.z` | `x.y.z-baseline` | `x.y.z-compat` |
-| Nightly, floating | `nightly` | — | `nightly-compat` |
-| Nightly, dated | `nightly-mmddyyyy` | — | `nightly-mmddyyyy-compat` |
+| Release, flotante | `latest` | `latest-baseline` | `latest-compat` |
+| Release, fijada | `x.y.z` | `x.y.z-baseline` | `x.y.z-compat` |
+| Nightly, flotante | `nightly` | — | `nightly-compat` |
+| Nightly, con fecha | `nightly-mmddyyyy` | — | `nightly-mmddyyyy-compat` |
 
-Use `latest` for stable releases, a pinned version for reproducible builds, and `nightly` to track `main`.
+Usa `latest` para versiones estables, una versión fijada para builds reproducibles y `nightly` para seguir la rama `main`.
 
 ```yaml
-# Recommended
+# Recomendada
 image: floci/floci:latest
 
-# Includes AWS CLI and boto3
+# Incluye AWS CLI y boto3
 image: floci/floci:latest-compat
 
-# ARM64 baseline for Raspberry Pi 4 / pre-LSE cores
+# Baseline ARM64 para Raspberry Pi 4 / núcleos anteriores a LSE
 image: floci/floci:latest-baseline
 
-# Pinned release
+# Versión fijada
 image: floci/floci:x.y.z
 
-# Track main
+# Seguir main
 image: floci/floci:nightly
 ```
 
-### Release train
+### Calendario de versiones
 
-Stable releases ship on the **15th and the last day of each month**, cut automatically at 00:30 US Central time. Between trains, `floci/floci:nightly` tracks `main`. Every merged fix is available the next day, and dated `nightly-mmddyyyy` tags let you pin a specific night's build.
+Las versiones estables salen **el día 15 y el último día de cada mes**, generadas automáticamente a las 00:30 hora central de EE. UU. Entre versiones, `floci/floci:nightly` sigue a `main`. Cada corrección fusionada está disponible al día siguiente, y las etiquetas con fecha `nightly-mmddyyyy` te permiten fijar el build de una noche concreta.
 
-Versions are derived from Conventional Commits by [semantic-release](https://github.com/semantic-release/semantic-release); `CHANGELOG.md` is generated, never hand-edited. Releases are cut from `main` only: there are no maintenance branches.
+Las versiones se calculan a partir de Conventional Commits con [semantic-release](https://github.com/semantic-release/semantic-release); `CHANGELOG.md` se genera automáticamente y nunca se edita a mano. Las versiones se publican solo desde `main`: no hay ramas de mantenimiento.
 
-## Configuration
+## Configuración
 
-All settings are overridable through environment variables with the `FLOCI_` prefix.
+Todos los ajustes se pueden sobrescribir con variables de entorno con el prefijo `FLOCI_`.
 
-| Variable | Default | Description |
+| Variable | Valor por defecto | Descripción |
 |---|---|---|
-| `FLOCI_PORT` | `4566` | Port exposed by the Floci API |
-| `FLOCI_DEFAULT_REGION` | `us-east-1` | Default AWS region |
-| `FLOCI_DEFAULT_ACCOUNT_ID` | `000000000000` | Default AWS account ID |
-| `FLOCI_BASE_URL` | `http://localhost:4566` | Base URL used when Floci returns service URLs |
-| `FLOCI_HOSTNAME` | Unset | Hostname used in returned URLs when Floci runs inside Docker Compose |
-| `FLOCI_STORAGE_MODE` | `memory` | Storage mode: `memory`, `persistent`, `hybrid`, or `wal` |
-| `FLOCI_STORAGE_PERSISTENT_PATH` | `./data` | Directory used for persisted state |
-| `FLOCI_SERVICES_LAMBDA_ECR_BASE_URI` | `public.ecr.aws` | ECR base URI used when pulling Lambda runtime images (legacy name `FLOCI_ECR_BASE_URI` still works) |
-| `FLOCI_SERVICES_S3_ENFORCE_AUTH` | `false` | Enforce S3 public/private read access and reject unknown signed S3 access keys |
+| `FLOCI_PORT` | `4566` | Puerto que expone la API de Floci |
+| `FLOCI_DEFAULT_REGION` | `us-east-1` | Región de AWS por defecto |
+| `FLOCI_DEFAULT_ACCOUNT_ID` | `000000000000` | ID de cuenta de AWS por defecto |
+| `FLOCI_BASE_URL` | `http://localhost:4566` | URL base que usa Floci cuando devuelve URLs de servicios |
+| `FLOCI_HOSTNAME` | Sin definir | Nombre de host usado en las URLs devueltas cuando Floci corre dentro de Docker Compose |
+| `FLOCI_STORAGE_MODE` | `memory` | Modo de almacenamiento: `memory`, `persistent`, `hybrid` o `wal` |
+| `FLOCI_STORAGE_PERSISTENT_PATH` | `./data` | Directorio donde se guarda el estado persistido |
+| `FLOCI_SERVICES_LAMBDA_ECR_BASE_URI` | `public.ecr.aws` | URI base de ECR usada al descargar las imágenes de runtime de Lambda (el nombre antiguo `FLOCI_ECR_BASE_URI` sigue funcionando) |
+| `FLOCI_SERVICES_S3_ENFORCE_AUTH` | `false` | Aplica el acceso de lectura público/privado de S3 y rechaza claves de acceso firmadas desconocidas |
 
-Full reference: [configuration docs](https://floci.io/floci/configuration/advanced/application-yml)
+Referencia completa: [documentación de configuración](https://floci.io/floci/configuration/advanced/application-yml)
 
-### Multi-container Docker Compose
+### Docker Compose con varios contenedores
 
-When your application runs in a different container, set `FLOCI_HOSTNAME` to the Floci service name so returned URLs, such as SQS `QueueUrl` values, resolve correctly.
+Cuando tu aplicación corre en otro contenedor, define `FLOCI_HOSTNAME` con el nombre del servicio de Floci para que las URLs devueltas (por ejemplo, los `QueueUrl` de SQS) se resuelvan correctamente.
 
 ```yaml
 services:
@@ -893,61 +898,61 @@ services:
       - floci
 ```
 
-Without this, services may return URLs using `localhost`, which points to the wrong container from the application container.
+Sin esto, los servicios pueden devolver URLs con `localhost`, que desde el contenedor de la aplicación apunta al contenedor equivocado.
 
-## Community
+## Comunidad
 
-Join the Floci community on [Slack](https://join.slack.com/t/floci/shared_invite/zt-3tjn02s3q-A00kEjJ1cZxsg_imTfy6Cw) or [GitHub Discussions](https://github.com/orgs/floci-io/discussions). Feature ideas, compatibility questions, design tradeoffs, and rough proposals are welcome.
+Únete a la comunidad de Floci en [Slack](https://join.slack.com/t/floci/shared_invite/zt-3tjn02s3q-A00kEjJ1cZxsg_imTfy6Cw) o en [GitHub Discussions](https://github.com/orgs/floci-io/discussions). Son bienvenidas las ideas de funciones, preguntas de compatibilidad, debates de diseño y propuestas en borrador.
 
-## Sponsors
+## Patrocinadores
 
-Floci is independent open source, funded by the people and companies who use it.
-Sponsorship buys gratitude and nothing else: every emulated service is free for
-everyone, forever, and no sponsor gets features, priority, or roadmap influence
-that the rest of the Flock does not.
+Floci es código abierto independiente, financiado por las personas y empresas que lo usan.
+El patrocinio solo compra gratitud: todos los servicios emulados son gratis para
+todo el mundo, para siempre, y ningún patrocinador obtiene funciones, prioridad ni
+influencia en la hoja de ruta que no tenga el resto de la comunidad (*the Flock*).
 
-### 🥇 Gold
+### 🥇 Oro
 
-Large logo with top placement in the emulator READMEs and on floci.io, plus a
-mention in release notes.
+Logo grande en primera posición en los README de los emuladores y en floci.io, más
+una mención en las notas de versión.
 
 [IceGuard](https://github.com/iceguard) · [Softmax](https://softmax.com/)
 
-### 🥈 Silver
+### 🥈 Plata
 
-Logo in the emulator READMEs and on floci.io, plus a mention in release notes.
+Logo en los README de los emuladores y en floci.io, más una mención en las notas de versión.
 
-*Your logo here. [Become a sponsor](https://github.com/sponsors/floci-io).*
+*Tu logo aquí. [Hazte patrocinador](https://github.com/sponsors/floci-io).*
 
-### 🥉 Community
+### 🥉 Comunidad
 
-Name in the emulator READMEs, a sponsor badge on GitHub, and our sincere thanks.
+Nombre en los README de los emuladores, una insignia de patrocinador en GitHub y nuestro sincero agradecimiento.
 
 [AutoScout24](https://www.autoscout24.com) · [Nexxion AI](https://nexxion.ai/)
 
-Every sponsor, including the Friends of the Flock who support Floci outside these
-tiers, is listed in [THANKS.md](https://github.com/floci-io/.github/blob/main/THANKS.md).
+Todos los patrocinadores, incluidos los *Friends of the Flock* que apoyan a Floci fuera de estos
+niveles, aparecen en [THANKS.md](https://github.com/floci-io/.github/blob/main/THANKS.md).
 
-**[Sponsor Floci](https://github.com/sponsors/floci-io)**
+**[Patrocina Floci](https://github.com/sponsors/floci-io)**
 
-## Star History
+## Historial de estrellas
 
 <p align="center">
   <a href="https://www.star-history.com/?repos=floci-io%2Ffloci&type=date&legend=top-left">
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=floci-io/floci&type=date&theme=dark&legend=top-left" />
       <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=floci-io/floci&type=date&legend=top-left" />
-      <img width="600" alt="Star History Chart" src="https://api.star-history.com/chart?repos=floci-io/floci&type=date&legend=top-left" />
+      <img width="600" alt="Gráfico del historial de estrellas" src="https://api.star-history.com/chart?repos=floci-io/floci&type=date&legend=top-left" />
     </picture>
   </a>
 </p>
 
-## Contributors
+## Contribuidores
 
 <a href="https://github.com/floci-io/floci/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=floci-io/floci&max=100&columns=20" />
 </a>
 
-## License
+## Licencia
 
-MIT. Use it however you want.
+MIT. Úsalo como quieras.
