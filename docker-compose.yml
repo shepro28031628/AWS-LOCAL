@@ -29,10 +29,25 @@ services:
       # TLS proxy serves HTTP and HTTPS on the same port 4566 (first-byte sniffing),
       # so no extra port mapping is needed — this is what makes the TLS/HTTPS suites pass.
       FLOCI_TLS_ENABLED: "true"
+      # Consola web con la marca de AWS Nube Local (ver docker/console/Dockerfile).
+      FLOCI_SERVICES_UI_IMAGE: nube-local/floci-ui:0.7.0
+    depends_on:
+      consola-build:
+        condition: service_completed_successfully
     networks:
       floci_default:
         aliases:
           - localhost.floci.io
+
+  # Solo construye la imagen de la consola web y termina enseguida (aparece como
+  # "Exited (0)" en Docker Desktop, es normal). El emulador la arranca cuando
+  # abres http://localhost:4566/_floci/ui
+  consola-build:
+    build:
+      context: docker/console
+    image: nube-local/floci-ui:0.7.0
+    entrypoint: ["true"]
+    restart: "no"
 
 networks:
   floci_default:

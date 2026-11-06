@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" width="520" height="140" role="img" aria-label="AWS Nube Local">
   <defs>
-    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7DD3FC"/>
-      <stop offset="1" stop-color="#3B82F6"/>
+    <linearGradient id="nlCloud" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5EEAD4"/>
+      <stop offset="1" stop-color="#A78BFA"/>
+    </linearGradient>
+<linearGradient id="nlWord" gradientUnits="userSpaceOnUse" x1="262" y1="0" x2="372" y2="0">
+      <stop offset="0" stop-color="#5EEAD4"/>
+      <stop offset="1" stop-color="#C4B5FD"/>
     </linearGradient>
   </defs>
-  <!-- Nube -->
-  <g fill="url(#cloud)">
-    <circle cx="52" cy="78" r="26"/>
-    <circle cx="82" cy="56" r="34"/>
-    <circle cx="116" cy="72" r="28"/>
-    <rect x="52" y="72" width="64" height="32"/>
+  <g fill="url(#nlCloud)">
+    <circle cx="52" cy="80" r="25"/>
+    <circle cx="84" cy="58" r="33"/>
+    <circle cx="118" cy="76" r="25"/>
+    <rect x="52" y="76" width="66" height="29" rx="4"/>
   </g>
-  <!-- Terminal local dentro de la nube -->
-  <path d="M62 70 l12 10 l-12 10" fill="none" stroke="#0F172A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="82" y="86" width="22" height="6" rx="3" fill="#0F172A"/>
-  <!-- Base: "en tu máquina" -->
-  <rect x="40" y="112" width="88" height="6" rx="3" fill="#F8FAFC" opacity="0.85"/>
-  <!-- Texto -->
-  <text x="164" y="78" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="800" fill="#F8FAFC" letter-spacing="-1">AWS <tspan fill="#7DD3FC">Nube</tspan> Local</text>
+  <circle cx="72" cy="46" r="9" fill="#FFFFFF" opacity="0.28"/>
+  <path d="M66 72 l11 9 l-11 9" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="84" y="87" width="20" height="6" rx="3" fill="#FFFFFF"/>
+  <text x="164" y="80" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#F1F5F9" letter-spacing="-0.5">AWS <tspan fill="url(#nlWord)">Nube</tspan> Local</text>
   <text x="166" y="110" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="19" font-weight="500" fill="#94A3B8">Tu nube, en tu máquina</text>
 </svg>

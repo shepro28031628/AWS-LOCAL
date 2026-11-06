@@ -2,9 +2,9 @@
   color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --floci-ink: #262425;
-  --floci-brand: #2563EB;
-  --floci-orange: #ff9900;
-  --floci-orange-dark: #995c00;
+  --floci-brand: #0F766E;
+  --floci-orange: #7C3AED;
+  --floci-orange-dark: #6D28D9;
   --floci-surface: #ffffff;
   --floci-muted: #5f6772;
   --floci-border: #e4e7ec;
@@ -22,7 +22,7 @@ body {
   padding: 32px 16px;
   color: var(--floci-ink);
   background:
-    radial-gradient(circle at 15% 10%, #ff99001f 0, transparent 34%),
+    radial-gradient(circle at 15% 10%, #7C3AED1f 0, transparent 34%),
     radial-gradient(circle at 85% 90%, #5559a71f 0, transparent 34%),
     #f5f6f8;
 }
@@ -54,7 +54,7 @@ body {
   bottom: -78px;
   width: 190px;
   height: 190px;
-  border: 28px solid #ff990026;
+  border: 28px solid #7C3AED26;
   border-radius: 50%;
   content: "";
 }
@@ -116,10 +116,10 @@ p + p {
   display: inline-block;
   margin-top: 6px;
   padding: 4px 8px;
-  border: 1px solid #ff990052;
+  border: 1px solid #7C3AED52;
   border-radius: 6px;
   color: var(--floci-ink);
-  background: #fff7e8;
+  background: #F5F3FF;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: .9em;
   font-weight: 700;
@@ -127,10 +127,10 @@ p + p {
 
 .verification-code {
   padding: 12px;
-  border: 1px solid #ff990052;
+  border: 1px solid #7C3AED52;
   border-radius: 6px;
   color: var(--floci-ink);
-  background: #fff7e8;
+  background: #F5F3FF;
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: .9em;
   overflow-wrap: anywhere;
@@ -157,7 +157,7 @@ p + p {
   margin-top: 5px;
   border-radius: 50%;
   background: var(--floci-orange);
-  box-shadow: 0 0 0 4px #ff990024;
+  box-shadow: 0 0 0 4px #7C3AED24;
 }
 
 form {
@@ -183,18 +183,18 @@ button {
 
 button:focus-visible,
 .home-link:focus-visible {
-  outline: 3px solid #92400e;
+  outline: 3px solid #4C1D95;
   outline-offset: 2px;
 }
 
 .continue {
-  color: #1c1917;
+  color: #ffffff;
   background: var(--floci-orange);
-  box-shadow: 0 8px 18px #ff99002e;
+  box-shadow: 0 8px 18px #7C3AED2e;
 }
 
 .continue:hover {
-  background: #ffad2f;
+  background: #8B5CF6;
 }
 
 .cancel {
@@ -212,7 +212,7 @@ button:focus-visible,
   align-items: center;
   justify-content: center;
   margin-top: 28px;
-  color: #1c1917;
+  color: #ffffff;
   background: var(--floci-orange);
   text-decoration: none;
 }

@@ -1,13 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" width="520" height="140" role="img" aria-label="AWS Nube Local">
-  <!-- Variante para barras de cabecera de color sólido: nube y texto en blanco -->
+  <!-- Variante para barras de cabecera de color sólido: nube y texto claros -->
   <g fill="#FFFFFF">
-    <circle cx="52" cy="78" r="26"/>
-    <circle cx="82" cy="56" r="34"/>
-    <circle cx="116" cy="72" r="28"/>
-    <rect x="52" y="72" width="64" height="32"/>
+    <circle cx="52" cy="80" r="25"/>
+    <circle cx="84" cy="58" r="33"/>
+    <circle cx="118" cy="76" r="25"/>
+    <rect x="52" y="76" width="66" height="29" rx="4"/>
   </g>
-  <path d="M62 70 l12 10 l-12 10" fill="none" stroke="#2563EB" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <rect x="82" y="86" width="22" height="6" rx="3" fill="#2563EB"/>
-  <rect x="40" y="112" width="88" height="6" rx="3" fill="#FFFFFF" opacity="0.85"/>
-  <text x="164" y="90" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="800" fill="#FFFFFF" letter-spacing="-1">AWS <tspan fill="#BAE6FD">Nube</tspan> Local</text>
+  <path d="M66 72 l11 9 l-11 9" fill="none" stroke="#0F766E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="84" y="87" width="20" height="6" rx="3" fill="#0F766E"/>
+  <text x="164" y="92" font-family="Segoe UI, Inter, Helvetica, Arial, sans-serif" font-size="46" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">AWS <tspan fill="#CCFBF1">Nube</tspan> Local</text>
 </svg>
