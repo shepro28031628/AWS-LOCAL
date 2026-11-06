@@ -77,7 +77,7 @@ class SigninIntegrationTest {
                 .asString();
         assertTrue(page.contains("Sign in to Floci"));
         assertTrue(page.contains("src=\"/_floci/signin/floci-header.svg\""));
-        assertTrue(page.contains("alt=\"Floci\""));
+        assertTrue(page.contains("alt=\"AWS Nube Local\""));
         assertTrue(page.contains("href=\"/_floci/signin/floci.svg\""));
         assertTrue(page.contains("href=\"/_floci/signin/signin.css\""));
         assertTrue(page.contains("<form method=\"post\" action=\"/_floci/signin/consent\">"));
@@ -92,8 +92,8 @@ class SigninIntegrationTest {
                 .then()
                 .statusCode(200)
                 .header("Content-Type", Matchers.startsWith("image/svg+xml"))
-                .body(Matchers.containsString("viewBox=\"0 0 531.25 156.71\""))
-                .body(Matchers.containsString("#FF9900"));
+                .body(Matchers.containsString("viewBox=\"0 0 520 140\""))
+                .body(Matchers.containsString("AWS Nube Local"));
 
         request()
                 .get("/_floci/signin/floci.svg")

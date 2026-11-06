@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="docs/assets/floci-black.svg#gh-light-mode-only" alt="Floci" width="500" />
-  <img src="docs/assets/floci-white.svg#gh-dark-mode-only" alt="Floci" width="500" />
+  <img src="docs/assets/nube-local-black.svg#gh-light-mode-only" alt="AWS Nube Local" width="500" />
+  <img src="docs/assets/nube-local-white.svg#gh-dark-mode-only" alt="AWS Nube Local" width="500" />
 </p>
 
 <p align="center">
-  <strong>Cualquier nube. En local.</strong><br />
+  <strong>AWS Nube Local: cualquier nube, en local.</strong><br />
   Ligero, esponjoso y siempre gratis<br />
   Sin cuenta. Sin token de autenticación. Sin funciones bloqueadas. Solo <code>docker compose up</code>.
 </p>
@@ -28,7 +28,7 @@
   <a href="https://floci.io/floci/">Documentación</a>
 </p>
 
-> **Nota:** esta es una traducción al español del README original en inglés del proyecto [floci-io/floci](https://github.com/floci-io/floci). Los nombres de servicios de AWS, variables de entorno, comandos y bloques de código se dejan tal cual.
+> **Créditos:** AWS Nube Local está basado en [Floci](https://github.com/floci-io/floci), un emulador local de AWS de código abierto con licencia MIT (ver [LICENSE](LICENSE)). Esta documentación es una versión en español adaptada para uso en clase; los nombres de servicios de AWS, variables de entorno, comandos y bloques de código se dejan tal cual.
 
 ---
 
@@ -899,60 +899,3 @@ services:
 ```
 
 Sin esto, los servicios pueden devolver URLs con `localhost`, que desde el contenedor de la aplicación apunta al contenedor equivocado.
-
-## Comunidad
-
-Únete a la comunidad de Floci en [Slack](https://join.slack.com/t/floci/shared_invite/zt-3tjn02s3q-A00kEjJ1cZxsg_imTfy6Cw) o en [GitHub Discussions](https://github.com/orgs/floci-io/discussions). Son bienvenidas las ideas de funciones, preguntas de compatibilidad, debates de diseño y propuestas en borrador.
-
-## Patrocinadores
-
-Floci es código abierto independiente, financiado por las personas y empresas que lo usan.
-El patrocinio solo compra gratitud: todos los servicios emulados son gratis para
-todo el mundo, para siempre, y ningún patrocinador obtiene funciones, prioridad ni
-influencia en la hoja de ruta que no tenga el resto de la comunidad (*the Flock*).
-
-### 🥇 Oro
-
-Logo grande en primera posición en los README de los emuladores y en floci.io, más
-una mención en las notas de versión.
-
-[IceGuard](https://github.com/iceguard) · [Softmax](https://softmax.com/)
-
-### 🥈 Plata
-
-Logo en los README de los emuladores y en floci.io, más una mención en las notas de versión.
-
-*Tu logo aquí. [Hazte patrocinador](https://github.com/sponsors/floci-io).*
-
-### 🥉 Comunidad
-
-Nombre en los README de los emuladores, una insignia de patrocinador en GitHub y nuestro sincero agradecimiento.
-
-[AutoScout24](https://www.autoscout24.com) · [Nexxion AI](https://nexxion.ai/)
-
-Todos los patrocinadores, incluidos los *Friends of the Flock* que apoyan a Floci fuera de estos
-niveles, aparecen en [THANKS.md](https://github.com/floci-io/.github/blob/main/THANKS.md).
-
-**[Patrocina Floci](https://github.com/sponsors/floci-io)**
-
-## Historial de estrellas
-
-<p align="center">
-  <a href="https://www.star-history.com/?repos=floci-io%2Ffloci&type=date&legend=top-left">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=floci-io/floci&type=date&theme=dark&legend=top-left" />
-      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=floci-io/floci&type=date&legend=top-left" />
-      <img width="600" alt="Gráfico del historial de estrellas" src="https://api.star-history.com/chart?repos=floci-io/floci&type=date&legend=top-left" />
-    </picture>
-  </a>
-</p>
-
-## Contribuidores
-
-<a href="https://github.com/floci-io/floci/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=floci-io/floci&max=100&columns=20" />
-</a>
-
-## Licencia
-
-MIT. Úsalo como quieras.

@@ -85,7 +85,7 @@ public class SigninController {
                     <body>
                       <main class="shell">
                         <header class="brand">
-                          <img src="/_floci/signin/floci-header.svg" alt="Floci" width="190" height="56">
+                          <img src="/_floci/signin/floci-header.svg" alt="AWS Nube Local" width="190" height="56">
                           <span class="local-badge">Local only</span>
                         </header>
                         <section class="content">
@@ -162,7 +162,7 @@ public class SigninController {
                     <body>
                       <main class="shell">
                         <header class="brand">
-                          <img src="/_floci/signin/floci-header.svg" alt="Floci" width="190" height="56">
+                          <img src="/_floci/signin/floci-header.svg" alt="AWS Nube Local" width="190" height="56">
                           <span class="local-badge">Local only</span>
                         </header>
                         <section class="content">
@@ -268,7 +268,7 @@ public class SigninController {
                 <body>
                   <main class="shell">
                     <header class="brand">
-                      <img src="/_floci/signin/floci-header.svg" alt="Floci" width="190" height="56">
+                      <img src="/_floci/signin/floci-header.svg" alt="AWS Nube Local" width="190" height="56">
                       <span class="local-badge">Local only</span>
                     </header>
                     <section class="content">
