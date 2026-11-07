@@ -20,6 +20,8 @@
 
 Es ideal para aprender AWS en clase, hacer prácticas, probar código antes de subirlo a la nube y ejecutar tests automáticos.
 
+> 📘 **¿Primera vez?** Sigue los [manuales paso a paso](manuales/README.md): instalación, consola web, AWS CLI, S3, DynamoDB, SQS/SNS, Lambda y Python.
+
 ## Tecnologías
 
 | Tecnología | Para qué se usa |
