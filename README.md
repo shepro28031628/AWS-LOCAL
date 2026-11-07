@@ -20,7 +20,7 @@
 
 Es ideal para aprender AWS en clase, hacer prácticas, probar código antes de subirlo a la nube y ejecutar tests automáticos.
 
-> 📘 **¿Primera vez?** Sigue los [manuales paso a paso](manuales/README.md): instalación, consola web, AWS CLI, S3, DynamoDB, SQS/SNS, Lambda y Python.
+> 📘 **Aprende a usarlo:** hay [manuales prácticos](manuales/README.md) de más de 20 servicios (S3, DynamoDB, RDS, Lambda, API Gateway, SQS, SNS, EventBridge, Step Functions, Athena, Kinesis, IAM, Cognito, CloudWatch, CloudFormation...) con ejercicios probados y un proyecto integrador.
 
 ## Tecnologías
 

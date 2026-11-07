@@ -21,7 +21,7 @@ La consola web te deja ver lo que tienes en tu nube local sin escribir comandos.
 
 ## Prueba rápida
 
-1. Crea un bucket desde la terminal (lo explicamos en el [manual 4](04-s3-archivos.md)):
+1. Crea un bucket desde la terminal (lo explicamos en el [manual de S3](10-s3.md)):
 
    ```bash
    aws s3 mb s3://prueba-consola

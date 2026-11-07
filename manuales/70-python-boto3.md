@@ -1,4 +1,4 @@
-# 8. Programar con Python
+# Programar con Python (boto3)
 
 [Volver al índice](README.md)
 
@@ -121,4 +121,4 @@ Cuando quieras usar el mismo código con AWS de verdad, solo quita `endpoint_url
 
 La idea es igual en todos: configurar el endpoint `http://localhost:4566` y credenciales `test`. Hay ejemplos para Java, Node.js y Go en el panel principal: <http://localhost:4566/>.
 
-**Siguiente:** [9. Problemas frecuentes](09-problemas-frecuentes.md)
+**Siguiente:** [Proyecto integrador](80-proyecto-integrador.md)

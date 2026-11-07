@@ -1,4 +1,4 @@
-# 9. Problemas frecuentes
+# Problemas frecuentes
 
 [Volver al índice](README.md)
 
@@ -28,7 +28,7 @@ Igual que el anterior: faltan las variables `AWS_ACCESS_KEY_ID` y `AWS_SECRET_AC
 No tienes la AWS CLI instalada, o tienes que cerrar y abrir la terminal después de instalarla. Mientras tanto, usa `docker compose exec floci aws ...`.
 
 **Error de comillas o de JSON en PowerShell**
-PowerShell trata las comillas de forma distinta. Guarda el JSON en un archivo y usa `file://archivo.json`, como en el [manual 5](05-dynamodb-base-de-datos.md).
+PowerShell trata las comillas de forma distinta. Guarda el JSON en un archivo y usa `file://archivo.json`, como en el [manual de DynamoDB](11-dynamodb.md).
 
 ## Al usar los servicios
 

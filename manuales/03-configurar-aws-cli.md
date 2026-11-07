@@ -67,4 +67,4 @@ docker compose exec floci aws s3 ls
 
 > Con esta opción, los archivos que uses (por ejemplo para subirlos a S3) tienen que estar **dentro** del contenedor, no en tu PC. Para los manuales es más cómodo instalar la AWS CLI.
 
-**Siguiente:** [4. S3: guardar archivos](04-s3-archivos.md)
+**Siguiente:** [S3: almacenamiento de archivos](10-s3.md)
